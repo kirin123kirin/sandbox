@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.platform }}
-
+    continue-on-error: true
     strategy:
       max-parallel: 15
       matrix:
