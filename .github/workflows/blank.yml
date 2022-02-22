@@ -47,28 +47,16 @@ jobs:
           echo "REPLACE ME!" > assets.gz
           echo "REPLACE ME!" > hoge.zip
 
-      - name: rename for win
+      - name: rename for windows
         shell: bash
         if: ${{ matrix.platform == 'windows-latest' }}
         run: for z in `ls *.zip`; do mv $z ${z//.zip/_win64.zip}; done
 
-      - name: rename for linux
+      - name: rename for linux or osx
         if: ${{ matrix.platform != 'windows-latest' }}
         run: |
           for z in `ls *.tar.gz`; do mv $z ${z//.tar.gz/_$(uname -ps | tr '[A-Z ]' '[a-z-]').tar.gz}; done
           for z in `ls *.gz`; do mv $z ${z//.gz/_$(uname -ps | tr '[A-Z ]' '[a-z-]').gz}; done
-
-#       - name: rename for linux
-#         if: ${{ matrix.platform == 'ubuntu-latest' }}
-#         run: |
-#           for z in `ls *.tar.gz`; do mv $z ${z//.tar.gz/_linux_x86_64.tar.gz}; done
-#           for z in `ls *.gz`; do mv $z ${z//.gz/_linux_x86_64.gz}; done
-
-#       - name: rename for osx
-#         if: ${{ matrix.platform == 'macos-latest' }}
-#         run: |
-#           for z in `ls *.tar.gz`; do mv $z ${z//.tar.gz/-macosx_10_16_x86_64.tar.gz}; done
-#           for z in `ls *.gz`; do mv $z ${z//.gz/-macosx_10_16_x86_64.gz}; done
 
       - uses: shogo82148/actions-upload-release-asset@v1
         if: ${{ matrix.platform != 'windows-latest' }}
