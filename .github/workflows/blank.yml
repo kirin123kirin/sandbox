@@ -6,7 +6,6 @@ on:
 
 jobs:
   create:
-    needs: [ build_python ]
     runs-on: ubuntu-latest
     steps:
       - name: version
