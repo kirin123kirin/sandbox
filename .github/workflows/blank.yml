@@ -26,6 +26,7 @@ jobs:
           echo "REPLACE ME!" > hoge.zip
 
       - name: version
+        shell: bash --login {0}
         run: echo "::set-output name=version::$(cat VERSION)"
         id: version
 
