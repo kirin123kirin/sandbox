@@ -15,15 +15,15 @@ jobs:
 
       - name: version
         shell: bash
-        run: cat VERSION
+        run: echo "::set-output name=version::$(cat VERSION)"
         id: version
 
       - name: Create Release
         id: create_release
         uses: shogo82148/actions-create-release@v1
         with:
-          tag_name: ${{ steps.version.outputs.version }}
-          release_name: Release ${{ steps.version.outputs.version }}
+          tag_name: v${{ steps.version.version }}
+          release_name: Release v${{ steps.version.version }}
 
       - uses: shogo82148/actions-upload-release-asset@v1
         with:
