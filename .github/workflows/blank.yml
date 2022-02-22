@@ -20,6 +20,13 @@ jobs:
         run: echo "::set-output name=version::$(cat VERSION)"
         id: version
 
+      - name: fname
+        shell: bash
+        if: ${{ runs-on != windows-latest }}
+        run: for z in *.gz; do mv $z $(echo $z | sed "s/\(.tar\).gz/$(uname -ps | tr '[A-Z ]' '[a-z-]'
+)\1.gz/g"); done
+
+
       - name: Create Release
         id: create_release
         uses: shogo82148/actions-create-release@v1
