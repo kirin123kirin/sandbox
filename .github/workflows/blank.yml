@@ -6,7 +6,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.platform }}
+    continue-on-error: true
+    strategy:
+      max-parallel: 15
+      matrix:
+        platform: [
+            # windows-latest,
+            ubuntu-latest,
+            # macos-latest
+        ]
+
     steps:
       - uses: actions/checkout@v2
 
@@ -22,7 +32,7 @@ jobs:
 
       - name: fname
         shell: bash
-        if: ${{ runs-on != windows-latest }}
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: for z in *.gz; do mv $z $(echo $z | sed "s/\(.tar\).gz/$(uname -ps | tr '[A-Z ]' '[a-z-]')\1.gz/g"); done
 
 
