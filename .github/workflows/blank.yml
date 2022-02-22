@@ -53,7 +53,7 @@ jobs:
         run: for z in `ls *.zip`; do mv $z ${z//.zip/_win64.zip}; done
 
       - name: rename for linux
-        if: ${{ matrix.platform == 'windows-latest' }}
+        if: ${{ matrix.platform != 'windows-latest' }}
         run: |
           for z in `ls *.tar.gz`; do mv $z ${z//.tar.gz/_$(uname -ps | tr '[A-Z ]' '[a-z-]').tar.gz}; done
           for z in `ls *.gz`; do mv $z ${z//.gz/_$(uname -ps | tr '[A-Z ]' '[a-z-]').gz}; done
