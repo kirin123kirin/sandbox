@@ -15,6 +15,9 @@ jobs:
       - name: Create Release
         id: create_release
         uses: shogo82148/actions-create-release@v1
+        with:
+          tag_name: v2
+          release_name: Release v2
 
       - uses: shogo82148/actions-upload-release-asset@v1
         with:
