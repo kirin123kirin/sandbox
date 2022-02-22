@@ -26,12 +26,10 @@ jobs:
           echo "REPLACE ME!" > hoge.zip
 
       - name: version
-        shell: bash
         run: echo "::set-output name=version::$(cat VERSION)"
         id: version
 
       - name: fname
-        shell: bash --login {0}
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: |
           for z in *.tar.gz; do mv $z ${z//.tar.gz/linux_x86_64.tar.gz}; done
