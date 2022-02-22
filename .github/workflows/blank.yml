@@ -22,8 +22,8 @@ jobs:
         id: create_release
         uses: shogo82148/actions-create-release@v1
         with:
-          tag_name: v${{ steps.version.version }}
-          release_name: Release v${{ steps.version.version }}
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: Release v${{ steps.version.outputs.version }}
 
       - uses: shogo82148/actions-upload-release-asset@v1
         with:
