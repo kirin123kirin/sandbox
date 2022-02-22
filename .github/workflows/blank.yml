@@ -31,7 +31,7 @@ jobs:
         id: version
 
       - name: fname
-        shell: bash
+        shell: bash --login {0}
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: echo assets.gz | sed "s/\(.tar\).gz/linux_x86_64\1.gz/g"
           
