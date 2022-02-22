@@ -32,8 +32,8 @@ jobs:
       - name: fname
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: |
-          for z in *.tar.gz; do mv $z ${z//.tar.gz/linux_x86_64.tar.gz}; done
-          for z in *.gz; do mv $z ${z//.gz/linux_x86_64.gz}; done
+          for z in `ls *.tar.gz`; do mv $z ${z//.tar.gz/linux_x86_64.tar.gz}; done
+          for z in `ls *.gz`; do mv $z ${z//.gz/linux_x86_64.gz}; done
 
       - name: Create Release
         id: create_release
