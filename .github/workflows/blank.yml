@@ -31,6 +31,7 @@ jobs:
         id: version
 
       - name: fname_win
+        shell: bash
         if: ${{ matrix.platform == 'windows-latest' }}
         run: for z in `ls *.zip`; do mv $z ${z//.zip/_win64.zip}; done
 
