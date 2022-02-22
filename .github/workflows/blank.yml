@@ -33,8 +33,7 @@ jobs:
       - name: fname
         shell: bash
         if: ${{ matrix.platform == 'ubuntu-latest' }}
-        run: for z in *.gz; do mv $z $(echo $z | sed "s/\(.tar\).gz/$(uname -ps | tr '[A-Z ]' '[a-z-]')\1.gz/g"); done
-
+        run: for z in *.gz; do mv $z $(echo $z | sed "s/\(.tar\).gz/linux_x86_64\1.gz/g"); done
 
       - name: Create Release
         id: create_release
