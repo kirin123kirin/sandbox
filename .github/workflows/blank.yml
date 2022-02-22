@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: make and build applications
+      # make and build applications
       - run: |
           echo "REPLACE ME!" > assets.gz
           echo "REPLACE ME!" > hoge.zip
