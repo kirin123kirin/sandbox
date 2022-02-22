@@ -2,7 +2,12 @@ on:
   push:
     paths:
       - 'VERSION'
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'reason'
+        required:    true
+        default:     'any'
 
 jobs:
   create:
