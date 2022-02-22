@@ -44,6 +44,7 @@ jobs:
           release_name: Release v${{ steps.version.outputs.version }}
 
       - uses: shogo82148/actions-upload-release-asset@v1
+        if: ${{ matrix.platform != 'windows-latest' }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: "*.gz"
